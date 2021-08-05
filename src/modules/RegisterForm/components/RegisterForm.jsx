@@ -5,16 +5,17 @@ import Button from "../../../components/Button";
 import { Link } from "react-router-dom";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 
-const RegisterForm = () => {
-  const onFinish = (values) => {
-    console.log("Success:", values);
-  };
+const success = false;
 
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
-
-  const success = false;
+const RegisterForm = (props) => {
+  const {
+    values,
+    touched,
+    errors,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+  } = props;
 
   return (
     <div>
@@ -35,12 +36,12 @@ const RegisterForm = () => {
             initialValues={{
               remember: true,
             }}
-            onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
+            onSubmit={handleSubmit}
           >
             <Form.Item
               label="E-mail"
               name="email"
+              value={values.email}
               rules={[
                 {
                   required: true,
