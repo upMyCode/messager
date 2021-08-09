@@ -4,18 +4,22 @@ import Block from "../../../components/Block";
 import Button from "../../../components/Button";
 import { Link } from "react-router-dom";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
+import { useFormik,} from 'formik';
 
 const success = false;
 
-const RegisterForm = (props) => {
-  const {
-    values,
-    touched,
-    errors,
-    handleChange,
-    handleBlur,
-    handleSubmit,
-  } = props;
+const RegisterForm = props => {
+  const formik = useFormik({
+    initialValues: {
+      firstName: '',
+      lastName: '',
+      password: '',
+      email: '',
+    },
+    onSubmit: values => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
 
   return (
     <div>
@@ -36,13 +40,17 @@ const RegisterForm = (props) => {
             initialValues={{
               remember: true,
             }}
-            onSubmit={handleSubmit}
+            onFinish={formik.handleSubmit}           
           >
             <Form.Item
+              hasFeedback
               label="E-mail"
               name="email"
-              value={values.email}
               rules={[
+                {
+                  type: 'email',
+                  message: 'Введите корректный email'
+                },
                 {
                   required: true,
                   message: "Please input your username!",
@@ -52,38 +60,52 @@ const RegisterForm = (props) => {
               <Input />
             </Form.Item>
             <Form.Item
+              hasFeedback
               label="Ваше Имя"
               name="username"
               rules={[
                 {
                   required: true,
-                  message: "Please input your username!",
+                  message: "Введите имя пользователя!",
+                  whitespace: true,
                 },
               ]}
             >
-              <Input />
+              <Input/>
             </Form.Item>
 
             <Form.Item
+              hasFeedback
               label="Пароль"
               name="password"
               rules={[
                 {
                   required: true,
                   message: "Please input your password!",
-                },
+                }
               ]}
             >
               <Input.Password />
             </Form.Item>
             <Form.Item
+              hasFeedback
               label="Повторите пароль"
-              name="password"
+              name="confirm"
               rules={[
                 {
                   required: true,
-                  message: "Please input your password!",
+                  message: "Пожалуйста введите пароль!",
                 },
+                ({getFieldValue}) => ({
+                  validator(_, value) {
+                    if(!value || getFieldValue('password') === value) {
+                      return Promise.resolve()
+                    }
+                      return Promise.reject(
+                        'Два пароля не совпадают'
+                      )
+                  }
+                })
               ]}
             >
               <Input.Password />
@@ -133,4 +155,4 @@ const RegisterForm = (props) => {
   );
 };
 
-export default RegisterForm;
+export default RegisterForm
