@@ -18,7 +18,7 @@
             width: 33px;
             height: 33px;
             margin-right: 13px;
-            margin-bottom: 23px;
+            margin-bottom: 5px;
         }
     }
 
@@ -94,4 +94,51 @@
             text-align: right;
         }
     }
-}
+
+    &--is-typing {
+        #{$self}__bubble {
+            background: $message-typing-blue;
+        }
+    }
+
+    &--image {
+        #{$self}__attachments {
+           &-item {
+               img {
+                  width: 150px;
+                  height: 150px; 
+               }
+           } 
+        }
+    }
+
+    &__typing {
+            span {
+              height: 8px;
+              width: 8px;
+              margin-right: 4px;
+              background-color: $typing-spread;
+              display: inline-block;
+              border-radius: 50%;
+              opacity: 0.4;
+              @for $i from 1 through 3 {
+                &:nth-of-type(#{$i}) {
+                  animation: 1s blink infinite ($i * .3333s);
+                }
+              }
+            }
+          }
+          
+          @keyframes blink {
+            50% {
+              opacity: 1;
+            }
+          }
+          
+          @keyframes bulge {
+            50% {
+              transform: scale(1.05);
+            }
+          }
+           
+    }

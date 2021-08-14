@@ -4,11 +4,19 @@ import { UserOutlined, LockOutlined } from "@ant-design/icons"
 import Block from "../../../components/Block"
 import { Link } from "react-router-dom"
 import Button from "../../../components/Button"
+import { useFormik } from 'formik'
 
 const LoginForm = () => {
-  const onFinish = (values) => {
-    console.log("Received values of form: ", values)
-  }
+  const formik = useFormik({
+    initialValues: {
+      password: '',
+      email: '',
+    },
+    onSubmit: values => {
+      alert(JSON.stringify(values, null, 2));
+    }
+  })
+
   return (
     <div>
       <div className="auth__top">
@@ -22,24 +30,31 @@ const LoginForm = () => {
           initialValues={{
             remember: true,
           }}
-          onFinish={onFinish}
+          onFinish={formik.handleSubmit}
         >
           <Form.Item
-            name="username"
+            name="email"
+            hasFeedback
             rules={[
               {
                 required: true,
                 message: "Please input your Username!",
+                whitespace: true
               },
             ]}
           >
             <Input
               prefix={<UserOutlined className="site-form-item-icon" />}
-              placeholder="Username"
+              placeholder="email"
+              id='email'
+              value={formik.values.email}
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
             />
           </Form.Item>
           <Form.Item
             name="password"
+            hasFeedback
             rules={[
               {
                 required: true,
@@ -51,15 +66,11 @@ const LoginForm = () => {
               prefix={<LockOutlined className="site-form-item-icon" />}
               type="password"
               placeholder="Password"
+              id='password'
+              value={formik.values.password}
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange} 
             />
-          </Form.Item>
-          <Form.Item>
-            <Form.Item name="remember" valuePropName="checked" noStyle>
-              <Checkbox>Remember me</Checkbox>
-            </Form.Item>
-            <a className="login-form-forgot" href="#">
-              Forgot password
-            </a>
           </Form.Item>
           <Form.Item>
             <Button
@@ -67,6 +78,7 @@ const LoginForm = () => {
               htmlType="submit"
               className="login-form-button"
               size="large"
+              onClick={formik.handleSubmit}
             >
               Войти в аккаунт
             </Button>

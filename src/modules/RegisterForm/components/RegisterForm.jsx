@@ -11,10 +11,10 @@ const success = false;
 const RegisterForm = props => {
   const formik = useFormik({
     initialValues: {
-      firstName: '',
-      lastName: '',
+      name: '',
       password: '',
       email: '',
+      confirm: ''
     },
     onSubmit: values => {
       alert(JSON.stringify(values, null, 2));
@@ -53,11 +53,17 @@ const RegisterForm = props => {
                 },
                 {
                   required: true,
-                  message: "Please input your username!",
+                  message: "Введите email",
                 },
               ]}
             >
-              <Input />
+              <Input
+                id='email'
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                placeholder='email'
+              />
             </Form.Item>
             <Form.Item
               hasFeedback
@@ -66,14 +72,19 @@ const RegisterForm = props => {
               rules={[
                 {
                   required: true,
-                  message: "Введите имя пользователя!",
+                  message: "Введите имя пользователя",
                   whitespace: true,
                 },
               ]}
             >
-              <Input/>
+              <Input
+                id='name'
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.name}
+                placeholder='username'
+              />
             </Form.Item>
-
             <Form.Item
               hasFeedback
               label="Пароль"
@@ -81,11 +92,17 @@ const RegisterForm = props => {
               rules={[
                 {
                   required: true,
-                  message: "Please input your password!",
+                  message: "Введите пароль",
                 }
               ]}
             >
-              <Input.Password />
+              <Input.Password
+                id='password' 
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                placeholder='password'
+              />
             </Form.Item>
             <Form.Item
               hasFeedback
@@ -94,7 +111,7 @@ const RegisterForm = props => {
               rules={[
                 {
                   required: true,
-                  message: "Пожалуйста введите пароль!",
+                  message: "Введите пароль",
                 },
                 ({getFieldValue}) => ({
                   validator(_, value) {
@@ -108,7 +125,13 @@ const RegisterForm = props => {
                 })
               ]}
             >
-              <Input.Password />
+              <Input.Password
+                id='confirm'
+                value={formik.values.confirm}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                placeholder='password'
+              />
             </Form.Item>
             <Form.Item
               wrapperCol={{
@@ -121,6 +144,7 @@ const RegisterForm = props => {
                 htmlType="submit"
                 className="login-form-button"
                 size="large"
+                onClick={formik.handleSubmit}
               >
                 Зарегистрироваться
               </Button>
