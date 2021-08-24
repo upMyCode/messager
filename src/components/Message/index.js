@@ -1,11 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import formatDistanceToNow from "date-fns/formatDistanceToNow";
-import { ru } from "date-fns/locale";
+import Time from '../Time'
 import classNames from "classnames";
-import readedSVG from "../../assests/img/readed.svg";
-import noreadedSVG from "../../assests/img/noreaded.svg";
-
+import IconReaded from '../IconReaded'
 import "./Message.scss";
 
 const Message = ({ avatar, user, date, text, isMe, isReaded, attachments, isTyping }) => {
@@ -17,19 +14,7 @@ const Message = ({ avatar, user, date, text, isMe, isReaded, attachments, isTypi
             })}
         >
             <div className="message__content">
-                {isMe && isReaded ? (
-                    <img
-                        className="message__icon-readed"
-                        src={readedSVG}
-                        alt="readed"
-                    />
-                ) : (
-                    <img
-                        className="message__icon-readed message__icon-readed--no"
-                        src={noreadedSVG}
-                        alt="noreaded"
-                    />
-                )}
+                <IconReaded isMe={isMe} isReaded={isReaded} />
                 <div className="message__avatar">
                     <img src={avatar} alt={`Avatar ${user}`} />
                 </div>
@@ -59,10 +44,7 @@ const Message = ({ avatar, user, date, text, isMe, isReaded, attachments, isTypi
                         </div>
                         { date && ( 
                             <span className="message__date">
-                                {formatDistanceToNow(Date.parse(date), {
-                                    addSuffix: true,
-                                    locale: ru,
-                                })}
+                                <Time date={date} />
                             </span>
                         )}
                 </div>
@@ -82,6 +64,8 @@ Message.propTypes = {
     user: PropTypes.object,
     attachments: PropTypes.array,
     isTyping: PropTypes.bool,
+    isMe: PropTypes.bool,
+    isReaded: PropTypes.bool
 };
 
 export default Message;

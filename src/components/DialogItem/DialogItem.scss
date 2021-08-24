@@ -1,0 +1,88 @@
+@import "../../styles/_variables";
+
+.dialogs {
+    width: 300px;
+    &__item {
+        display: flex;
+        $item: &;
+        margin-bottom: 20px;
+        &-avatar {
+            position: relative;
+            flex: 0 0 40px;
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            img {
+                height: 100%;
+                width: 100%;
+                border-radius: 50%;    
+            }    
+        }
+        &--online {
+            #{$item}-avatar {
+                &::before {
+                    display: block;
+                    position: absolute;
+                    bottom: -2px;
+                    right: 0;
+                    content: '';
+                    background-color: $green;
+                    border-radius: 30px;
+                    width: 14px;
+                    height: 14px;
+                    border: 3px solid #fff;
+                }    
+            }
+        }
+        &-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex: 1;
+            &-top {
+                display: flex;
+                b {
+                    font-weight: 500;
+                    font-size: 14px;
+                    flex: 1;
+                    margin-bottom: 8px;   
+                }
+                span {
+                    opacity: 0.4
+                }
+            } 
+            &-bottom {
+                position: relative;
+                p {
+                    opacity: 0.5;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    width: 220px;
+                    height: 1.2em;
+                    white-space: nowrap;
+                }
+                &-count {
+                    position: absolute;
+                    background: #f46b6b;
+                    right: 0;
+                    bottom: 0;
+                    color: #fff;
+                    font-weight: 500;
+                    width: 18px;
+                    height: 18px;
+                    border-radius: 30px;
+                    font-size: 11px;
+                    text-align: center;
+                    line-height: 17px;
+                    box-shadow: 0 0 0px 3px #fff; 
+                }
+                .message__icon-readed {
+                    position: absolute;
+                    bottom: 0;
+                    left: auto !important;
+                    right: 0;
+                }
+            }   
+        }    
+    }    
+}
