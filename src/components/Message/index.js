@@ -1,8 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Time from '../Time'
 import classNames from "classnames";
-import IconReaded from '../IconReaded'
+import {IconReaded, Time} from '../'
 import "./Message.scss";
 
 const Message = ({ avatar, user, date, text, isMe, isReaded, attachments, isTyping }) => {

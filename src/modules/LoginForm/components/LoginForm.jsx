@@ -1,9 +1,8 @@
 import React from "react"
 import { Input, Form } from "antd"
 import { UserOutlined, LockOutlined } from "@ant-design/icons"
-import Block from "../../../components/Block"
+import {Block, Button} from "../../../components"
 import { Link } from "react-router-dom"
-import Button from "../../../components/Button"
 import { useFormik } from 'formik'
 
 const LoginForm = () => {

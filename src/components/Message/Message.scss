@@ -99,6 +99,10 @@
         #{$self}__bubble {
             background: $message-typing-blue;
         }
+        #{$self}__typing {
+            display: flex;
+            justify-content: center;
+        }
     }
 
     &--image {

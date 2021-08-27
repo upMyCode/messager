@@ -1,7 +1,6 @@
 import React from "react";
 import { Form, Input } from "antd";
-import Block from "../../../components/Block";
-import Button from "../../../components/Button";
+import {Block, Button} from "../../../components";
 import { Link } from "react-router-dom";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 import { useFormik,} from 'formik';
