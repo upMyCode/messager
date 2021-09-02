@@ -25,23 +25,23 @@ const getMessageTime = created_at => {
     ) 
 }
 
-const DialogItem = ({ userItem, unreaded, isMe, avatar }) => {
+const DialogItem = ({ user, unreaded, isMe, created_at, text }) => {
     return (
-        <div className={classNames('dialogs__item', {'dialogs__item--online': userItem.user.isOnline})}>
+        <div className={classNames('dialogs__item', {'dialogs__item--online': user.isOnline})}>
             <div className='dialogs__item-avatar'>
                 {/* <img src={user.avatar} alt={`${user.fullname} avatar`}/> */}
-                 {getAvatar(avatar)}   
+                 {getAvatar(user.avatar)}   
             </div>
             <div className='dialogs__item-info'>
                 <div className='dialogs__item-info-top'>
-                    <b>{userItem.user.fullname}</b>
+                    <b>{user.fullname}</b>
                     <span>
-                        {getMessageTime(userItem.created_at)}
+                        {getMessageTime(created_at)}
                     </span>
                 </div>
                 <div className='dialogs__item-info-bottom'>
                     <p>
-                        {userItem.text}
+                        {text}
                     </p>
                     {isMe && <IconReaded isMe={true} isReaded={false} />}
                     {unreaded > 0 && ( 

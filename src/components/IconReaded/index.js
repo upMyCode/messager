@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types'
-import readedSVG from "../../assests/img/readed.svg"
-import noreadedSVG from "../../assests/img/noreaded.svg"
+import readedSVG from "../../assets/img/readed.svg"
+import noreadedSVG from "../../assets/img/noreaded.svg"
 
 const IconReaded = ({ isMe, isReaded }) => 
   isMe &&

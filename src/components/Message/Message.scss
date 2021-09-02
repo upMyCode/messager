@@ -64,6 +64,48 @@
         }
     }
 
+    &--is-audio {
+        width: 300px;
+        #{$self}__bubble {
+            position: relative;
+            width: 250px;
+            overflow: hidden;    
+        }
+        #{$self}__audio {
+            &-info {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: relative;
+            }
+            &-btn {
+                button {
+                    cursor: pointer;
+                    width: 28px;
+                    height: 28px;
+                    border-radius: 30px;
+                    border: 0;
+                    background: #0f3997; 
+                    img {
+                        height: 13px;    
+                    } 
+                }
+            }
+            &-duration {
+                color: #fff;
+                opacity: 0.8;
+            }
+            &-progress {
+                position: absolute;
+                left: 0;
+                top: 0;
+                background-color: #abcdfd;
+                height: 100%;
+            }
+
+        }       
+    }
+
     &--isme {
         display: flex;
         flex-direction: row-reverse;

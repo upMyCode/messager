@@ -37,7 +37,7 @@ const Home = () => {
           />      
           <Message 
             avatar='https://sun9-83.userapi.com/impg/DQ96jQU1jHo8QOGuuypKAq4dVCyAD3VnBtzNhQ/rI4V4Y4z1Rg.jpg?size=400x400&quality=96&sign=674b24c16c6aee19edab61bf93319b4c&type=album' 
-            isTyping
+            audio='https://soundcloud.com/noiizltd/michael-white-cyberpunk-demo'
             date='Wed Aug 04 2021 18:15:57'
             isReaded={true}
             isMe={false}
