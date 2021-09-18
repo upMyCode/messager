@@ -1,10 +1,11 @@
-import React, { useState} from "react";
+import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import {IconReaded, Time} from '../'
 import waveSVG from '../../assets/img/wave.svg'
 import playSVG from '../../assets/img/play.svg'
-import pauseSVG from '../../assets/img/play.svg'
+import pauseSVG from '../../assets/img/pause.svg'
+import convertTime from '../../helpers/convertTime'
 import "./Message.scss";
 
 const Message = ({ 
@@ -19,6 +20,50 @@ const Message = ({
     isTyping }) => {
 
     const [isPlay, setPlay] = useState(false)
+    const [progressBar, setProgressBar] = useState(0)
+    const [currentTime, setCurrentTime] = useState(0)
+    const audioRef = useRef(null)
+
+    useEffect(() => {
+        audioRef.current.addEventListener(
+            "playing",
+            () => {
+                setPlay(true)
+            },
+             false
+        );
+        audioRef.current.addEventListener(
+            "ended",
+            () => {
+                setPlay(false)
+                setProgressBar(0)
+            },
+             false
+        );
+        audioRef.current.addEventListener(
+            "pause",
+            () => {
+                setPlay(false)
+            },
+             false
+        );
+        audioRef.current.addEventListener(
+            "timeupdate",
+            () => {
+                const duration = (audioRef.current && audioRef.current.duration) || 0
+                setCurrentTime((audioRef.current.currentTime).toFixed(2))
+                setProgressBar((audioRef.current.currentTime / duration) * 100)
+            })
+    }, [])
+   
+    const togglePlay = () => {
+        if (!isPlay) {
+            audioRef.current.play()
+        } else {
+            audioRef.current.pause()
+        }
+        
+    }
 
     return (
         <div className={classNames("message", { 
@@ -46,14 +91,20 @@ const Message = ({
                                 )}
                                 {
                                     audio && <div className='message__audio'>
-                                        <div className='message__audio-progress' style={{ width: '40%'}}></div> 
+                                        <audio 
+                                            src={audio} 
+                                            preload='auto'
+                                            ref={audioRef}
+                                        />
+                                        <div className='message__audio-progress' style={{ width: progressBar + '%'}}></div> 
                                         <div className='message__audio-info'>
                                             <div className='message__audio-btn'>
-                                                <button>
-                                                    {isPlay ? (
-                                                        <img src={playSVG} alt='play svg'/>
-                                                    ) : ( 
+                                                <button onClick={togglePlay}>
+                                                    {
+                                                       isPlay ? (
                                                         <img src={pauseSVG} alt='pause svg'/>
+                                                       ) : (
+                                                        <img src={playSVG} alt='play svg'/>
                                                     )}
                                                 </button>
                                             </div>
@@ -61,7 +112,7 @@ const Message = ({
                                                 <img src={waveSVG} alt='wave svg'/>
                                             </div>
                                             <span className='message__audio-duration'>
-                                                00:19    
+                                                {convertTime(currentTime)}   
                                             </span>    
                                         </div>  
                                     </div>

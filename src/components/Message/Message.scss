@@ -65,6 +65,9 @@
     }
 
     &--is-audio {
+        audio {
+            display: none;
+        }
         width: 300px;
         #{$self}__bubble {
             position: relative;
