@@ -65,10 +65,10 @@
     }
 
     &--is-audio {
+        width: 300px;
         audio {
             display: none;
         }
-        width: 300px;
         #{$self}__bubble {
             position: relative;
             width: 250px;
@@ -103,6 +103,7 @@
                 left: 0;
                 top: 0;
                 background-color: #abcdfd;
+                transition: width 0.3s ease-in-out;
                 height: 100%;
             }
 
