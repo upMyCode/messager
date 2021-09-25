@@ -1,6 +1,7 @@
 import tinycolor from 'tinycolor2'
 
 const generateAvatarFromHash = hash => {
+    console.log(hash)
     const [r, g, b] = hash
     .substr(0, 3)
     .split('')

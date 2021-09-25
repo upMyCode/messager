@@ -26,7 +26,7 @@ const DialogItem = ({ user, unreaded, isMe, created_at, text }) => {
                 <div className='dialogs__item-info-top'>
                     <b>{user.fullname}</b>
                     <span>
-                        {getMessageTime(created_at)}
+                        {getMessageTime(Date.parse(created_at))}
                     </span>
                 </div>
                 <div className='dialogs__item-info-bottom'>

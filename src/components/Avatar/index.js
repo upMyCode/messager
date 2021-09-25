@@ -12,7 +12,7 @@ const Avatar = ({ user }) => {
              />
         )
     } else {
-        const {color, colorLight} = generateAvatarFromHash(user._id)
+        const {color, colorLight} = generateAvatarFromHash(user.__id)
         const firstCharInFullname = user.fullname[0].toUpperCase()
 
         return (
