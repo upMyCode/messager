@@ -24,9 +24,10 @@
             .dialogs {
                 &__item {
                     padding: 5px 20px;
+                    cursor: pointer; 
+                    &.active,
                     &:hover {
                       background-color: #f3f7ff; 
-                      cursor: pointer; 
                     }
                 }
             }
@@ -34,5 +35,44 @@
     }
     &__dialog {
         flex: 1;
-    }
+        &-header { 
+          padding: 15px; 
+          border-bottom: 1px solid #f7f7f7;
+          display: flex; 
+          justify-content: space-between;
+          align-items: center;
+          &-fullname {
+              font-weight: bold;
+              display: block;
+              margin-bottom: 5px;
+          }
+          &-center {
+            text-align: center; 
+            .status {
+                color: #202020;
+                opacity: 0.4;
+                position: relative;
+                &--online {
+                    &::before {
+                        background-color: #00C980;
+                    } 
+                }
+                &::before {
+                    display: block;
+                    content: '';
+                    height: 8px;
+                    width: 8px;
+                    border-radius: 30px;
+                    background-color: #D3D3D3;
+                    position: absolute;
+                    top: 5px;
+                    left: -5px;
+                }
+            }  
+          }
+        }
+        &-messages {
+            padding: 30px;    
+        }
+    }   
 }

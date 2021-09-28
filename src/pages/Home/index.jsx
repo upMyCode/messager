@@ -19,10 +19,10 @@ const Home = () => {
         <div className="chat__sidebar">
           <div className="chat__sidebar-header">
             <div>
-              <UsergroupAddOutlined />
+              <UsergroupAddOutlined style={{ fontSize: "16px" }} />
               <span>Список диалогов</span>
             </div>
-            <FormOutlined />
+            <FormOutlined style={{ fontSize: "16px" }} />
           </div>
           <div className="chat__sidebar-search">
             <Search
@@ -281,59 +281,69 @@ const Home = () => {
         </div>
         <div className="chat__dialog">
           <div className="chat__dialog-header">
+            <div />
             <div className="chat__dialog-header-center">
               <b className="chat__dialog-header-fullname">Steve Jobs</b>
               <div className="chat__dialog-header-status">
                 <div className="status status--online">онлайн</div>
               </div>
             </div>
-            <EllipsisOutlined />
+            <EllipsisOutlined style={{ fontSize: "16px" }} />
+          </div>
+          <div className="chat__dialog-messages">
+            <Message
+              avatar="https://sun9-83.userapi.com/impg/DQ96jQU1jHo8QOGuuypKAq4dVCyAD3VnBtzNhQ/rI4V4Y4z1Rg.jpg?size=400x400&quality=96&sign=674b24c16c6aee19edab61bf93319b4c&type=album"
+              audio="https://notificationsounds.com/storage/sounds/file-sounds-1150-pristine.ogg"
+              date="Wed Aug 04 2021 18:15:57"
+              isReaded={true}
+              isMe={false}
+            />
+            <Message
+              avatar="https://sun9-83.userapi.com/impg/DQ96jQU1jHo8QOGuuypKAq4dVCyAD3VnBtzNhQ/rI4V4Y4z1Rg.jpg?size=400x400&quality=96&sign=674b24c16c6aee19edab61bf93319b4c&type=album"
+              date="Wed Aug 04 2021 18:15:57"
+              isReaded={true}
+              isMe={false}
+              text="fhdihdlhd.rhd.ofhrdohdlnvehgsp0djgxdpoxdheojsphp"
+            />
+            <Message
+              avatar="https://sun9-83.userapi.com/impg/DQ96jQU1jHo8QOGuuypKAq4dVCyAD3VnBtzNhQ/rI4V4Y4z1Rg.jpg?size=400x400&quality=96&sign=674b24c16c6aee19edab61bf93319b4c&type=album"
+              date="Wed Aug 04 2021 18:15:57"
+              isReaded={true}
+              isMe={false}
+              text="fhdihdlhd.rhd.ofhrdohdlnvehgsp0djgxdpoxdheojsphp"
+              attachments={[
+                {
+                  url: "https://images.unsplash.com/photo-1628033892645-25983849cdaa?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1740&q=80",
+                },
+                {
+                  url: "https://images.unsplash.com/photo-1628033892645-25983849cdaa?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1740&q=80",
+                },
+                {
+                  url: "https://images.unsplash.com/photo-1628033892645-25983849cdaa?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1740&q=80",
+                },
+              ]}
+            />
+            <Message
+              avatar="https://sun9-83.userapi.com/impg/DQ96jQU1jHo8QOGuuypKAq4dVCyAD3VnBtzNhQ/rI4V4Y4z1Rg.jpg?size=400x400&quality=96&sign=674b24c16c6aee19edab61bf93319b4c&type=album"
+              date="Wed Aug 04 2021 18:15:57"
+              isReaded={true}
+              isMe={true}
+              text="fhdihdlhd.rhd.ofhrdohdlnvehgsp0djgxdpoxdheojsphp"
+            />
+            <Message
+              avatar="https://sun9-83.userapi.com/impg/DQ96jQU1jHo8QOGuuypKAq4dVCyAD3VnBtzNhQ/rI4V4Y4z1Rg.jpg?size=400x400&quality=96&sign=674b24c16c6aee19edab61bf93319b4c&type=album"
+              date="Wed Aug 04 2021 18:15:57"
+              isReaded={true}
+              isMe={false}
+              attachments={[
+                {
+                  url: "https://images.unsplash.com/photo-1628033892645-25983849cdaa?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1740&q=80",
+                },
+              ]}
+            />
           </div>
         </div>
       </div>
-      {/* <Dialogs
-            userId={0} 
-            items = {[
-              {
-                _id: '3cbb96f485febfd02beb23b654607a6a',
-                text: 'dgesgsgdgsgsegesgesgsegdirhrhodebnosngsoeggpsegehgepehgpwgepgewgnednv vwengewngpeongpeowngwegn',
-                isReaded: false,
-                created_at: new Date(2014, 9, 6, 14, 0),
-                user: {
-                  _id: '3cbb96f485febfd02beb23b654607a6a',
-                  fullname: 'Steve Jobs',
-                  isOnline: false,
-                  avatar: null
-                }
-              },
-              {
-                _id: '3cbb96f485febfd02beb23b654607a6a',
-                text: 'dgesgsgdgsgsegesgesgsegdirhrhodebnosngsoeggpsegehgepehgpwgepgewgnednv vwengewngpeongpeowngwegn',
-                isReaded: false,
-                created_at: new Date(2014, 9, 6, 14, 0),
-                user: {
-                  _id: '3cbb96f485febfd02beb23b654607a6a',
-                  fullname: 'Steve Jobs',
-                  isOnline: false,
-                  avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGhCG-fOMCamjLeA9RoZHgXKJLXiFSUh2Wmg&usqp=CAU'
-                }
-              }
-            ]}
-          />      
-          <Message 
-            avatar='https://sun9-83.userapi.com/impg/DQ96jQU1jHo8QOGuuypKAq4dVCyAD3VnBtzNhQ/rI4V4Y4z1Rg.jpg?size=400x400&quality=96&sign=674b24c16c6aee19edab61bf93319b4c&type=album' 
-            audio='https://notificationsounds.com/storage/sounds/file-sounds-1150-pristine.ogg'
-            date='Wed Aug 04 2021 18:15:57'
-            isReaded={true}
-            isMe={false}
-          />
-          <Message 
-            avatar='https://sun9-83.userapi.com/impg/DQ96jQU1jHo8QOGuuypKAq4dVCyAD3VnBtzNhQ/rI4V4Y4z1Rg.jpg?size=400x400&quality=96&sign=674b24c16c6aee19edab61bf93319b4c&type=album' 
-            date='Wed Aug 04 2021 18:15:57'
-            isReaded={true}
-            isMe={false}
-            isTyping={true}
-          /> */}
     </section>
   );
 };
